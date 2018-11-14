@@ -1,4 +1,4 @@
-const fs = require('fs')
+const fs = require('fs');
 
 const getNewId = (array) => {
     if (array.length > 0) {
@@ -7,9 +7,7 @@ const getNewId = (array) => {
         return 1
     }
 }
-
 const newDate = () => new Date().toString()
-
 function mustBeInArray(array, id) {
     return new Promise((resolve, reject) => {
         const row = array.find(r => r.id == id)
@@ -22,7 +20,6 @@ function mustBeInArray(array, id) {
         resolve(row)
     })
 }
-
 function writeJSONFile(filename, content) {
     fs.writeFileSync(filename, JSON.stringify(content), 'utf8', (err) => {
         if (err) {
@@ -30,7 +27,6 @@ function writeJSONFile(filename, content) {
         }
     })
 }
-
 module.exports = {
     getNewId,
     newDate,
