@@ -1,7 +1,12 @@
-const express = require('express')
-const router = express.Router()
-const post = require('../models/post.model')
-const m = require('../helpers/middlewares')
+const express = require('express');
+const router = express.Router();
+const post = require('../models/post.model');
+const m = require('../helpers/middlewares');
+
+router.use(function timeLog(req, res, next) {
+    console.log('Time: ', Date.now());
+    next();
+});
 
 /* All posts */
 router.get('/', async (req, res) => {
@@ -74,4 +79,4 @@ router.delete('/:id', m.mustBeInteger, async (req, res) => {
     })
 })
 
-module.exports = router
+module.exports = router;

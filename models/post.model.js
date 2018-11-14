@@ -1,6 +1,6 @@
-let posts = require('../data/posts.json')
-const filename = './data/posts.json'
-const helper = require('../helpers/helper.js')
+const filename = '../data/posts.json';
+let posts = require(filename);
+const helper = require('../helpers/helper');
 
 function getPosts() {
     return new Promise((resolve, reject) => {
@@ -10,7 +10,6 @@ function getPosts() {
                 status: 202
             })
         }
-
         resolve(posts)
     })
 }
