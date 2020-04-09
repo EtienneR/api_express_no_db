@@ -1,20 +1,28 @@
 {
-  "name": "api_no_db",
+  "name": "api_express_no_db",
   "version": "1.0.0",
-  "description": "",
+  "description": "Make sure you have Node and NPM installed both with `node -v && npm -v`.   Install packages with `npm install`.   Run server with `npm run dev` for using **Nodemon**.",
   "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.3"
+  },
   "scripts": {
-    "dev": "node_modules/.bin/nodemon --harmony -e js",
+    "dev": "node_modules/.bin/nodemon -e js",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EtienneR/api_express_no_db.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "express": "^4.16.3"
+  "bugs": {
+    "url": "https://github.com/EtienneR/api_express_no_db/issues"
   },
-  "devDependencies": {
-    "morgan": "^1.9.1",
-    "nodemon": "^1.18.4"
-  }
+  "homepage": "https://github.com/EtienneR/api_express_no_db#readme"
 }

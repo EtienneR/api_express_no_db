@@ -23,6 +23,11 @@ function mustBeInArray(array, id) {
     })
 }
 
+function retriveLatestPosts(filename) {
+    const rawData = fs.readFileSync(filename, 'utf8');
+    return JSON.parse(rawData);
+}
+
 function writeJSONFile(filename, content) {
     fs.writeFileSync(filename, JSON.stringify(content), 'utf8', (err) => {
         if (err) {
@@ -35,5 +40,6 @@ module.exports = {
     getNewId,
     newDate,
     mustBeInArray,
-    writeJSONFile
+    writeJSONFile,
+    retriveLatestPosts
 }

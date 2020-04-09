@@ -1,8 +1,8 @@
-let posts = require('../data/posts.json')
 const filename = './data/posts.json'
 const helper = require('../helpers/helper.js')
 
 function getPosts() {
+    const posts = helper.retriveLatestPosts(filename)
     return new Promise((resolve, reject) => {
         if (posts.length === 0) {
             reject({
@@ -17,6 +17,7 @@ function getPosts() {
 
 function getPost(id) {
     return new Promise((resolve, reject) => {
+        const posts = helper.retriveLatestPosts(filename);
         helper.mustBeInArray(posts, id)
         .then(post => resolve(post))
         .catch(err => reject(err))
@@ -25,6 +26,7 @@ function getPost(id) {
 
 function insertPost(newPost) {
     return new Promise((resolve, reject) => {
+        const posts = helper.retriveLatestPosts(filename);
         const id = { id: helper.getNewId(posts) }
         const date = { 
             createdAt: helper.newDate(),
@@ -39,6 +41,7 @@ function insertPost(newPost) {
 
 function updatePost(id, newPost) {
     return new Promise((resolve, reject) => {
+        const posts = helper.retriveLatestPosts(filename);
         helper.mustBeInArray(posts, id)
         .then(post => {
             const index = posts.findIndex(p => p.id == post.id)
@@ -57,10 +60,11 @@ function updatePost(id, newPost) {
 
 function deletePost(id) {
     return new Promise((resolve, reject) => {
+        const posts = helper.retriveLatestPosts(filename);
         helper.mustBeInArray(posts, id)
         .then(() => {
-            posts = posts.filter(p => p.id !== id)
-            helper.writeJSONFile(filename, posts)
+            const updatedPosts = posts.filter(p => p.id !== +id);
+            helper.writeJSONFile(filename, updatedPosts)
             resolve()
         })
         .catch(err => reject(err))
